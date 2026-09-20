@@ -1,4 +1,4 @@
-import {usuarios} from './listagemUsuarios.js';
+import { usuarios } from './listagemUsuarios.js';
 
 // Função para simular o login de um usuário
 
@@ -10,6 +10,9 @@ export function login(usuario, senha) {
             );
 
             if (user) {
+                sessionStorage.setItem('usuarioLogado',
+                    JSON.stringify(user)
+                );
                 resolve(user);
             } else {
                 reject(new Error('Usuário ou senha inválidos'));
@@ -33,6 +36,17 @@ login(usuarioprueba.email, usuarioprueba.senha).then(user => {
 });
 */
 
+// funçao logout
+export function logout() {
+    return new Promise((resolve) => {
+        sessionStorage.removeItem('user');
+        window.location.href = '../index.html';
+        resolve();
+    });
+}
+
+
+// Manipulação do formulário de login
 const loginForm = document.querySelector('#loginForm');
 const loginMessage = document.querySelector('#loginMessage');
 
