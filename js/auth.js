@@ -66,6 +66,7 @@ if (typeof document !== 'undefined') {
             } catch (error) {
                 loginMessage.textContent = error.message;
                 loginMessage.className = 'login-error';
+                loginForm.reset();
             }
         });
     });

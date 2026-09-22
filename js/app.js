@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    document.getElementById('nameUser').textContent = usuario.nome;
+
     const btnSair = document.getElementById('btn-sair');
     if (btnSair) {
         btnSair.addEventListener('click', async () => {
