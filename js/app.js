@@ -3,12 +3,12 @@ import { logout } from './auth.js';
 // Função para verificar se o usuário está logado
 
 export function verificarSessao() {
-    const userString = sessionStorage.getItem('user');
+    const userString = sessionStorage.getItem('usuariologado');
     if (userString) {
         const user = JSON.parse(userString);
         return user;
     } else {
-        window.location.href = '../index.html';
+        window.location.href = 'index.html';
         return null;
     }
 }

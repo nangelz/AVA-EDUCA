@@ -39,8 +39,8 @@ login(usuarioprueba.email, usuarioprueba.senha).then(user => {
 // funçao logout
 export function logout() {
     return new Promise((resolve) => {
-        sessionStorage.removeItem('user');
-        window.location.href = '../index.html';
+        sessionStorage.removeItem('usuariologado');
+        window.location.href = 'index.html';
         resolve();
     });
 }
