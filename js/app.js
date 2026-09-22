@@ -1,19 +1,23 @@
-import { logout } from './auth.js';
-
-// Função para verificar se o usuário está logado
+import { getCurrentUser, logout } from './auth.js';
 
 export function verificarSessao() {
-    const userString = sessionStorage.getItem('usuariologado');
-    if (userString) {
-        const user = JSON.parse(userString);
-        return user;
-    } else {
+    const user = getCurrentUser();
+
+    if (!user) {
         window.location.href = 'index.html';
         return null;
     }
+
+    return user;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const usuario = verificarSessao();
+
+    if (!usuario) {
+        return;
+    }
+
     const btnSair = document.getElementById('btn-sair');
     if (btnSair) {
         btnSair.addEventListener('click', async () => {
@@ -25,4 +29,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
