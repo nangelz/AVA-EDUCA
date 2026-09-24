@@ -1,4 +1,6 @@
-export const alunos = [ 
+const alunosSalvos = JSON.parse(localStorage.getItem('alunos') || '[]');
+
+export const alunos = alunosSalvos.length > 0 ? alunosSalvos : [
     { id: 1, 
         nome: "Lucas Henrique Martins",
         genero: "Masculino", 
