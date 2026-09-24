@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | AVA-EDUCA+</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Navegação principal">
+            <a class="brand" href="dashboard.html"><span class="brand-mark">A+</span><span>AVA-EDUCA+</span></a>
+            <nav class="sidebar-nav">
+                <a class="nav-link active" href="dashboard.html" aria-current="page"><span aria-hidden="true">⌂</span> Dashboard</a>
+                <a class="nav-link" href="cadastroAluno.html"><span aria-hidden="true">◉</span> Alunos</a>
+                <a class="nav-link disabled" href="#" aria-disabled="true"><span aria-hidden="true">▣</span> Cursos <small>Em breve</small></a>
+            </nav>
+            <button class="logout-button" id="btn-sair" type="button"><span aria-hidden="true">↪</span> Sair</button>
+        </aside>
+
+        <div class="page-area">
+            <header class="topbar">
+                <div><p class="eyebrow">Painel de controle</p><h1>Olá, <span id="nameUser">usuário</span></h1></div>
+                <div class="user-badge" aria-label="Usuário conectado"><span class="user-avatar" aria-hidden="true">U</span><span id="userEmail">Sessão ativa</span></div>
+            </header>
+
+            <main class="dashboard-content">
+                <section class="welcome-panel">
+                    <div><p class="eyebrow">Visão geral</p><h2>Administre sua operação acadêmica</h2><p>Confira os indicadores e acompanhe os próximos cursos cadastrados.</p></div>
+                    <a class="primary-button" href="cadastroAluno.html">Cadastrar aluno <span aria-hidden="true">→</span></a>
+                </section>
+
+                <section class="stats-grid" aria-label="Resumo acadêmico">
+                    <article class="stat-card"><span class="stat-label">Alunos cadastrados</span><strong id="totalAlunos">0</strong><span class="stat-note">Registros ativos</span></article>
+                    <article class="stat-card accent"><span class="stat-label">Cursos disponíveis</span><strong id="totalCursos">0</strong><span class="stat-note">Na base atual</span></article>
+                    <article class="stat-card"><span class="stat-label">Próximo início</span><strong id="proximoCurso">--</strong><span class="stat-note" id="proximoCursoNome">Nenhum curso encontrado</span></article>
+                </section>
+
+                <section class="courses-section" aria-labelledby="courses-title">
+                    <div class="section-heading"><div><p class="eyebrow">Agenda acadêmica</p><h2 id="courses-title">Próximos cursos</h2></div><span class="section-count" id="courseCount">0 cursos</span></div>
+                    <div class="course-list" id="curso-lista"></div>
+                </section>
+            </main>
+
+            <footer class="page-footer"><p>&copy; 2026 AVA-EDUCA+. Todos os direitos reservados.</p></footer>
+        </div>
+    </div>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
