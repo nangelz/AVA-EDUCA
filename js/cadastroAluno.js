@@ -7,6 +7,7 @@ const feedback = document.querySelector('#formFeedback');
 const cepInput = document.querySelector('#cep');
 
 function setError(fieldName, message) {
+	// Centraliza el texto y el estilo de error para todos los campos del formulario.
     const error = document.querySelector(`[data-error-for="${fieldName}"]`);
     const field = document.querySelector(`#${fieldName}`);
     if (error) error.textContent = message;
@@ -19,6 +20,7 @@ function clearErrors() {
 }
 
 function validateForm(data) {
+	// Las reglas se mantienen aquí para validar antes de crear y guardar un alumno.
     clearErrors();
     let valid = true;
     const requiredFields = ['nome', 'genero', 'cpf', 'telefone', 'email', 'cep', 'logradouro', 'numero', 'bairro', 'cidade', 'estado'];
@@ -59,12 +61,14 @@ function validateForm(data) {
 }
 
 function fillAddress(address) {
+	// Traduce los nombres de ViaCEP a los campos usados por nuestro formulario.
     const fields = { logradouro: address.logradouro, bairro: address.bairro, cidade: address.localidade, estado: address.uf };
     Object.entries(fields).forEach(([fieldName, value]) => { document.querySelector(`#${fieldName}`).value = value || ''; });
 }
 
 async function searchCep() {
     const cep = cepInput.value.replace(/\D/g, '');
+	// Solo se consulta el servicio cuando el CEP ya tiene ocho dígitos.
     if (cep.length !== 8) return;
     setError('cep', '');
     try {
@@ -82,9 +86,11 @@ async function searchCep() {
 }
 
 function getFormData() {
+	// FormData evita depender del orden de los inputs y normaliza espacios sobrantes.
     return Object.fromEntries([...new FormData(form).entries()].map(([key, value]) => [key, value.trim()]));
 }
 
+// La pantalla de registro requiere una sesión activa.
 const user = getCurrentUser();
 if (!user) {
     window.location.href = 'index.html';
@@ -107,6 +113,7 @@ form.addEventListener('submit', event => {
         feedback.classList.add('feedback-error');
         return;
     }
+	// Al guardar se actualizan localStorage y la lista en memoria mediante el módulo de alumnos.
     cadastrarAluno(new Aluno(data));
     form.reset();
     clearErrors();

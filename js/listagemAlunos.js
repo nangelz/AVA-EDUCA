@@ -1,3 +1,4 @@
+// Prioriza los registros guardados y usa estos datos iniciales en la primera visita.
 const alunosSalvos = JSON.parse(localStorage.getItem('alunos') || '[]');
 
 export const alunos = alunosSalvos.length > 0 ? alunosSalvos : [

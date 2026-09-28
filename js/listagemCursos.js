@@ -1,3 +1,4 @@
+// Fuente temporal de cursos; cada registro se vincula con un profesor por su correo.
 export const cursos = [ 
     { id: 1, nomeCurso: "Desenvolvimento Web", emailProfessor: "ana.silva@edutech.com", dataInicio: "2026-02-02", dataFim: "2026-04-30" }, 
     { id: 2, nomeCurso: "HTML e CSS Essencial", emailProfessor: "ana.silva@edutech.com", dataInicio: "2026-03-09", dataFim: "2026-04-17" }, 

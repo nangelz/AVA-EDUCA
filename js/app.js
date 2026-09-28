@@ -3,6 +3,7 @@ import { alunos } from './listagemAlunos.js';
 import { listarCursos } from './cursos.js';
 
 function formatDate(dateString) {
+	// Las fechas de los datos usan ISO, pero la interfaz se muestra en formato brasileño.
     return new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(`${dateString}T00:00:00`));
 }
 
@@ -12,6 +13,7 @@ async function renderDashboard(usuario) {
     document.getElementById('totalAlunos').textContent = alunos.length;
 
     try {
+        // Se ordena una copia para conservar intacta la fuente de datos compartida.
         const cursosDoUsuario = await listarCursos(usuario);
         const sortedCourses = [...cursosDoUsuario].sort((firstCourse, secondCourse) => firstCourse.dataInicio.localeCompare(secondCourse.dataInicio));
 
@@ -23,6 +25,7 @@ async function renderDashboard(usuario) {
             document.getElementById('proximoCursoNome').textContent = sortedCourses[0].nomeCurso;
         }
 
+        // La vista resume como máximo seis cursos para mantener la lista manejable.
         sortedCourses.slice(0, 6).forEach(course => {
             const courseCard = document.createElement('article');
             courseCard.className = 'course-row';
@@ -45,6 +48,7 @@ export function verificarSessao() {
     const user = getCurrentUser();
 
     if (!user) {
+		// Todas las pantallas protegidas vuelven al login cuando no hay sesión.
         window.location.href = 'index.html';
         return null;
     }
